@@ -1,0 +1,17 @@
+<ng-container *ngIf="!(loading$ | async); else loading">
+    <ng-container *ngIf="(users$ | async) as users; else error">
+        <div *ngFor="let user of users">
+            <h3>{{ user.name }}</h3>
+            <p>Price: {{ user.age }}</p>
+            <hr />
+        </div>
+    </ng-container>
+
+    <ng-template #error>
+        <div *ngIf="(error$ | async) as error">{{ error.statusText }}</div>
+    </ng-template>
+</ng-container>
+
+<ng-template #loading>
+    <div>Loading...</div>
+</ng-template>
