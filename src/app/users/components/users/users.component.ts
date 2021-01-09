@@ -19,10 +19,6 @@ export class UsersComponent implements OnInit {
   constructor(private store: Store) { }
 
   ngOnInit(): void {
-    this.loadUsers();
-  }
-
-  private loadUsers(): void {
     this.store.dispatch(loadUsers());
   }
 }
