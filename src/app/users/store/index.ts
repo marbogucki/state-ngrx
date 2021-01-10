@@ -8,7 +8,7 @@ import {
 } from '@ngrx/store';
 import { environment } from '../../../environments/environment';
 import { User } from '../models/User';
-import { loadUsers, loadUsersSuccess, loadUsersFailure } from './users.actions';
+import { loadUsers, loadUsersSuccess, loadUsersFailure, addUser, addUserSuccess, addUserFailure } from './users.actions';
 
 export const usersStateFeatureKey = 'usersState';
 
@@ -29,6 +29,12 @@ export const reducers = createReducer(
   on(loadUsers, (state) => ({ ...state, loading: true  })),
   on(loadUsersSuccess, (state, { users }) => ({ ...state, loading: false, users  })),
   on(loadUsersFailure, (state, { error }) => ({ ...state, loading: false, error  })),
+  on(addUser, (state) => ({ ...state,  })),
+  on(addUserSuccess, (state, { user }) => ({ 
+    ...state, 
+    users: [...state.users, user]  
+  })),
+  on(addUserFailure, (state, { error }) => ({ ...state, error  })),
 );
 
 const selectUsersFeature = createFeatureSelector(

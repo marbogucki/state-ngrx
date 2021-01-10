@@ -23,6 +23,18 @@
       "name": "Aleksandra",
       "surname": "Wojciechowska",
       "age": 35
+    },
+    {
+      "name": "aaa",
+      "surname": "bbb",
+      "age": "23",
+      "id": 5
+    },
+    {
+      "name": "dsaf",
+      "surname": "asdf",
+      "age": "43",
+      "id": 6
     }
   ]
 }
