@@ -31,7 +31,11 @@ export class AddUserComponent extends Destroy {
 
   public saveUser(): void {
     const user: Partial<User> = this.userForm.value;
-    
     this.store.dispatch(addUser({ user }));
   }
+
+  
 }
+
+
+

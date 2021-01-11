@@ -13,6 +13,7 @@ import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 
 export const usersStateFeatureKey = 'usersState';
 
+/* BEFORE ENTITY */
 // export interface UsersState {
 //   users: User[],
 //   loading: boolean,
@@ -26,6 +27,7 @@ export interface UsersState extends EntityState<User> {
 
 export const userAdapter: EntityAdapter<User> = createEntityAdapter<User>({});
 
+/* BEFORE ENTITY */
 // const initialUsersState: UsersState = {
 //   users: [],
 //   loading: false,
@@ -40,11 +42,13 @@ const initialUsersState: UsersState = userAdapter.getInitialState({
 export const reducers = createReducer(
   initialUsersState,
   on(loadUsers, (state) => ({ ...state, loading: true  })),
+  /* BEFORE ENTITY */
   // on(loadUsersSuccess, (state, { users }) => ({ ...state, loading: false, users  })),
   on(loadUsersSuccess, (state, { users }) => userAdapter.setAll(users, {... state, loading: false})),
   on(loadUsersFailure, (state, { error }) => ({ ...state, loading: false, error  })),
   on(addUser, (state) => ({ ...state,  })),
   on(addUserSuccess, (state, { user }) => userAdapter.addOne(user, state)),
+  /* BEFORE ENTITY */
   // on(addUserSuccess, (state, { user }) => ({ 
   //   ...state, 
   //   users: [...state.users, user]  
@@ -55,11 +59,6 @@ export const reducers = createReducer(
 const selectUsersFeature = createFeatureSelector(
   usersStateFeatureKey
 );
-
-// export const selectUsers = createSelector(
-//   selectUsersFeature,
-//   (state: UsersState) => state.users
-// );
 
 const {
   selectIds,
@@ -72,6 +71,12 @@ export const selectUsers = createSelector(
   selectUsersFeature,
   selectAll
 );
+
+/* BEFORE ENTITY */
+// export const selectUsers = createSelector(
+//   selectUsersFeature,
+//   (state: UsersState) => state.users
+// );
 
 export const selectUsersLoading = createSelector(
   selectUsersFeature,
